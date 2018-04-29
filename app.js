@@ -1,7 +1,10 @@
 firebase.initializeApp({
     apiKey: "AIzaSyBIFjhcH-IUMPcBqxZAduyBMQO6pdbO0yQ",
     authDomain: "talleropenshift.firebaseapp.com",
+    databaseURL: "https://talleropenshift.firebaseio.com",
     projectId: "talleropenshift",
+    storageBucket: "talleropenshift.appspot.com",
+    messagingSenderId: "704393218436"
 });
 
 // Initialize Cloud Firestore through Firebase
