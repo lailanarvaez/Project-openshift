@@ -1,7 +1,7 @@
 firebase.initializeApp({
-    aapiKey: "AIzaSyBzo2JiNStXVeDv_9XKNZow2b135gUDHwo",
-    authDomain: "openshift-5d53e.firebaseapp.com",
-    projectId: "openshift-5d53e"
+    apiKey: "AIzaSyBIFjhcH-IUMPcBqxZAduyBMQO6pdbO0yQ",
+    authDomain: "talleropenshift.firebaseapp.com",
+    projectId: "talleropenshift",
 });
 
 // Initialize Cloud Firestore through Firebase
@@ -14,7 +14,7 @@ function guardar() {
     var email = document.getElementById('email').value;
     var carrera = document.getElementById('carrera').value;
 
-    db.collection("users").add({
+    db.collection("empleados").add({
         nombre: nombre,
         cedula: cedula,
         email: email,
@@ -35,7 +35,7 @@ function guardar() {
 
 //Listar datos
 var tabla = document.getElementById('tabla');
-db.collection("users").onSnapshot((querySnapshot) => {
+db.collection("empleados").onSnapshot((querySnapshot) => {
     tabla.innerHTML = '';
     querySnapshot.forEach((doc) => {
         console.log(`${doc.id} => ${doc.data().nombre}`);
@@ -65,7 +65,7 @@ function editar(id, nombre, cedula, email, carrera) {
 
     boton.onclick = function () {
 
-        var washingtonRef = db.collection("users").doc(id);
+        var washingtonRef = db.collection("empleados").doc(id);
 
         var nombre = document.getElementById("nombre").value;
         var cedula = document.getElementById("cedula").value;
@@ -96,7 +96,7 @@ function editar(id, nombre, cedula, email, carrera) {
 
 //borrar datos
 function eliminar(id) {
-    db.collection("users").doc(id).delete().then(function () {
+    db.collection("empleados").doc(id).delete().then(function () {
         console.log("Usuario Eliminado");
     }).catch(function (error) {
         console.error("Error al eliminarlo ", error);
