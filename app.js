@@ -14,7 +14,7 @@ function guardar() {
     var email = document.getElementById('email').value;
     var carrera = document.getElementById('carrera').value;
 
-    db.collection("empleados").add({
+    db.collection("user").add({
         nombre: nombre,
         cedula: cedula,
         email: email,
@@ -35,7 +35,7 @@ function guardar() {
 
 //Listar datos
 var tabla = document.getElementById('tabla');
-db.collection("empleados").onSnapshot((querySnapshot) => {
+db.collection("user").onSnapshot((querySnapshot) => {
     tabla.innerHTML = '';
     querySnapshot.forEach((doc) => {
         console.log(`${doc.id} => ${doc.data().nombre}`);
@@ -65,7 +65,7 @@ function editar(id, nombre, cedula, email, carrera) {
 
     boton.onclick = function () {
 
-        var washingtonRef = db.collection("empleados").doc(id);
+        var washingtonRef = db.collection("user").doc(id);
 
         var nombre = document.getElementById("nombre").value;
         var cedula = document.getElementById("cedula").value;
@@ -96,7 +96,7 @@ function editar(id, nombre, cedula, email, carrera) {
 
 //borrar datos
 function eliminar(id) {
-    db.collection("empleados").doc(id).delete().then(function () {
+    db.collection("user").doc(id).delete().then(function () {
         console.log("Usuario Eliminado");
     }).catch(function (error) {
         console.error("Error al eliminarlo ", error);
